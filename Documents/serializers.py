@@ -13,10 +13,9 @@ class AppUserSerializers(serializers.ModelSerializer):
         fields = ('username', 'email', 'password', 'accountType')
 
     def create(self, validated_data):
-        print("***************")
-        print(validated_data)
         userData = validated_data.pop('user')
-        user = User.objects.create_user(userData)
+
+        user, created = User.objects.get_or_create(username=userData['username'], email=userData['email'], password=userData['password'])
         instance = AppUser.objects.create(user=user,**validated_data)
         return instance
 
