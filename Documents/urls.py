@@ -6,6 +6,7 @@ from Documents import views
 router = DefaultRouter()
 router.register(r'users', views.AppUserViewSet)
 router.register(r'LocalUsers', views.UserViewSet)
+router.register(r'project', views.ProjectViewSet)
 #router.register(r'Login', views.LoginViewSet)
 
 # The API URLs are now determined automatically by the router.
